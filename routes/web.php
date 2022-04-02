@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProprietaireController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/listeProprietaire', [ProprietaireController::class, 'index'])->name("listeProprietaires");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
