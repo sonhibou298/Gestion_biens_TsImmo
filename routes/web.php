@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(['auth'])->name('Accueil');
 
 Route::get('/listeProprietaire', [ProprietaireController::class, 'index'])->name("listeProprietaires");
+Route::get('/ajoutProprieaire', [ProprietaireController::class, 'create'])->name("AjoutProprietaire");
+Route::post('/ajoutProprieaire', [ProprietaireController::class, 'store'])->name("AjoutProprietaire");
 
 Route::get('/dashboard', function () {
     return view('dashboard');

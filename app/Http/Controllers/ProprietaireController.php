@@ -26,7 +26,7 @@ class ProprietaireController extends Controller
      */
     public function create()
     {
-        //
+        return view('proprietaires.add');
     }
 
     /**
@@ -37,7 +37,26 @@ class ProprietaireController extends Controller
      */
     public function store(StoreProprietaireRequest $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $proprietaire = new Proprietaire();
+        $proprietaire->codeProprietaire = $request->code;
+        $proprietaire->cni = $request->cni;
+        $proprietaire->nomProprietaire = $request->nom;
+        $proprietaire->prenomProprietaire = $request->prenom;
+        $proprietaire->sexe = $request->sexe;
+        $proprietaire->dateNaissance = $request->date;
+        $proprietaire->lieuNaissance = $request->lieuNaissance;
+        $proprietaire->users_id = $request->admin;
+
+        $proprietaire->save();
+
+
+        return view('proprietaires.add');
     }
 
     /**
