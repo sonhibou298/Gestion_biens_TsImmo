@@ -29,7 +29,9 @@
                 </div>
         </div>
         </div>
-            <div class="card mt-5">
+        <div class="col-md-6">
+
+        <div class="card mt-5">
                 <div class="card-header">
                     <h2>Liste des pays</h2>
                 </div>
@@ -54,6 +56,6 @@
                     </table>
                 </div>
             </div>
-
+        </div>
     </div>
 @endsection

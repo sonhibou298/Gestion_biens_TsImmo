@@ -27,7 +27,7 @@
                         <td>{{$p->dateNaissance}}</td>
                         <td>{{$p->lieuNaissance}}</td>
                         <td>
-                            <a href="{{route('modifierProprietaire', $p)}}"><button type="button" class="btn btn-outline-warning">Modifier</button></a>
+                            <a href="{{url('editProprietaire/'.$p->id)}}"><button type="button" class="btn btn-outline-warning">Modifier</button></a>
                             <a onclick="return confirm('Voulez-vous supprimer ce proprietaire ?')" href="{{route('SupprimerProprietaire', $p)}}"><button type="button" class="btn btn-outline-danger">Supprimer</button></a>
                         </td>
                     </tr>

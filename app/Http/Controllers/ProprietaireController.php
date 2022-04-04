@@ -75,10 +75,9 @@ class ProprietaireController extends Controller
      * @param  \App\Models\Proprietaire  $proprietaire
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proprietaire $proprietaire)
+    public function edit($id)
     {
-        $proprietaire = Proprietaire::all();
-        $proprietaire = Proprietaire::find($proprietaire);
+        $proprietaire = Proprietaire::find($id);
        return view('proprietaires.edit', compact('proprietaire'));
 
     }
@@ -91,9 +90,20 @@ class ProprietaireController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(UpdateProprietaireRequest $request, Proprietaire $proprietaire)
+    public function update(UpdateProprietaireRequest $request, $id)
     {
+        $proprietaire = Proprietaire::find($id);
+        $proprietaire->codeProprietaire = $request->code;
+        $proprietaire->cni = $request->cni;
+        $proprietaire->nomProprietaire = $request->nom;
+        $proprietaire->prenomProprietaire = $request->prenom;
+        $proprietaire->sexe = $request->sexe;
+        $proprietaire->dateNaissance = $request->date;
+        $proprietaire->lieuNaissance = $request->lieuNaissance;
+        $proprietaire->users_id = $request->admin;
 
+        $proprietaire->update();
+        return redirect()->route('listeProprietaires');
     }
 
     /**

@@ -17,7 +17,7 @@ class VilleController extends Controller
     public function index()
     {
         $villes = Ville::all();
-        return view('villes.ville');
+        return view('villes.ville', compact('villes'));
     }
 
     /**
@@ -28,7 +28,8 @@ class VilleController extends Controller
     public function create()
     {
         $pays = Pays::all();
-        return view('villes.ville');
+        $villes = Ville::all();
+        return view('villes.ville', compact('pays', 'villes'));
     }
 
     /**
@@ -42,7 +43,7 @@ class VilleController extends Controller
         $villes = new Ville();
         $villes->nomVille = $request->nom;
         $villes->pays_id = $request->pays;
-
+        $villes->save();
         return redirect()->route('listeVille');
     }
 

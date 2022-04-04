@@ -22,15 +22,18 @@ Route::get('/', function () {
 })->middleware(['auth'])->name('Accueil');
 
 Route::get('/listeProprietaire', [ProprietaireController::class, 'index'])->name("listeProprietaires");
-Route::get('/ajoutProprieaire', [ProprietaireController::class, 'create'])->name("AjoutProprietaire");
-Route::post('/ajoutProprieaire', [ProprietaireController::class, 'store'])->name("AjoutProprietaire");
+Route::get('/ajoutProprietaire', [ProprietaireController::class, 'create'])->name("AjoutProprietaire");
+Route::post('/ajoutProprietaire', [ProprietaireController::class, 'store'])->name("AjoutProprietaire");
 Route::get('/deleteProprietaire/{proprietaire}', [ProprietaireController::class, 'destroy'])->name("SupprimerProprietaire");
-Route::get('/editProprietaire', [ProprietaireController::class, 'edit'])->name("modifierProprietaire");
+Route::get('/editProprietaire/{id}', [ProprietaireController::class, 'edit'])->name("modifierProprietaire");
+Route::put('/updateProprietaire/{id}', [ProprietaireController::class, 'update'])->name("UpdateProprietaire");
 
-Route::get('listPropriete', [ProprieteController::class, 'index'])->name("listePropriete");
-Route::get('addPropriete', [ProprieteController::class, 'create'])->name("ajoutPropriete");
-Route::post('addPropriete', [ProprieteController::class, 'store'])->name("ajoutPropriete");
-Route::get('deletePropriete/{propriete}', [ProprieteController::class, 'destroy'])->name("supprimerPropriete");
+Route::get('/listPropriete', [ProprieteController::class, 'index'])->name("listePropriete");
+Route::get('/addPropriete', [ProprieteController::class, 'create'])->name("ajoutPropriete");
+Route::post('/addPropriete', [ProprieteController::class, 'store'])->name("ajoutPropriete");
+Route::get('/editPropriete/{id}', [ProprieteController::class, 'edit'])->name("ModifierPropriete");
+Route::put('/updatePropriete/{id}', [ProprieteController::class, 'update'])->name("UpdatePropriete");
+Route::get('/deletePropriete/{propriete}', [ProprieteController::class, 'destroy'])->name("SupprimerPropriete");
 
 //Route::get('/addPays', [PaysController::class, 'index'])->name("ListePays");
 Route::get('/addPays', [PaysController::class, 'create'])->name("ListePays");

@@ -17,8 +17,8 @@ class ProprieteController extends Controller
      */
     public function index()
     {
-        $prop = Propriete::all();
-        return view('proprietes.list', compact('prop'));
+        $propriete = Propriete::all();
+        return view('proprietes.list', compact('propriete'));
     }
 
     /**
@@ -29,7 +29,9 @@ class ProprieteController extends Controller
     public function create()
     {
         $proprietaire = Proprietaire::all();
-        $quarier = Quartier::all();
+        $quartier = Quartier::all();
+        return view('proprietes.add', compact('proprietaire','quartier'));
+
     }
 
     /**
@@ -41,7 +43,18 @@ class ProprieteController extends Controller
     public function store(StoreProprieteRequest $request)
     {
         $prop = new Propriete();
+        $prop->nomPropriete = $request->nom;
+        $prop->dateEnregistrement = $request->date;
+        $prop->nbrEtage = $request->nbrEtage;
+        $prop->nbrPiece = $request->nbrPiece;
+        $prop->superficie = $request->superficie;
+        $prop->adresse = $request->adresse;
+        $prop->typePropriete = $request->type;
+        $prop->proprietaire_id = $request->proprietaire;
+        $prop->quartier_id = $request->quartier;
 
+        $prop->save();
+        return redirect()->route('listePropriete');
     }
 
     /**
@@ -61,9 +74,12 @@ class ProprieteController extends Controller
      * @param  \App\Models\Propriete  $propriete
      * @return \Illuminate\Http\Response
      */
-    public function edit(Propriete $propriete)
+    public function edit($id)
     {
-        //
+        $proprietaire = Proprietaire::all();
+        $quartier = Quartier::all();
+        $propriete = Propriete::find($id);
+        return view('proprietes.edit', compact('propriete', 'proprietaire', 'quartier'));
     }
 
     /**
