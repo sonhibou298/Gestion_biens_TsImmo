@@ -16,7 +16,7 @@ class ProprietaireController extends Controller
     public function index()
     {
         $proprietaire = Proprietaire::all();
-        return view("proprietaires.index");
+        return view("proprietaires.index", compact('proprietaire'));
     }
 
     /**
@@ -37,11 +37,11 @@ class ProprietaireController extends Controller
      */
     public function store(StoreProprietaireRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+//        $request->validate([
+//            'name' => ['required', 'string', 'max:255'],
+//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+//            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+//        ]);
 
         $proprietaire = new Proprietaire();
         $proprietaire->codeProprietaire = $request->code;
@@ -55,8 +55,7 @@ class ProprietaireController extends Controller
 
         $proprietaire->save();
 
-
-        return view('proprietaires.add');
+        return redirect(route('listeProprietaires'));
     }
 
     /**
@@ -78,7 +77,10 @@ class ProprietaireController extends Controller
      */
     public function edit(Proprietaire $proprietaire)
     {
-        //
+        $proprietaire = Proprietaire::all();
+        $proprietaire = Proprietaire::find($proprietaire);
+       return view('proprietaires.edit', compact('proprietaire'));
+
     }
 
     /**
@@ -88,9 +90,10 @@ class ProprietaireController extends Controller
      * @param  \App\Models\Proprietaire  $proprietaire
      * @return \Illuminate\Http\Response
      */
+
     public function update(UpdateProprietaireRequest $request, Proprietaire $proprietaire)
     {
-        //
+
     }
 
     /**
@@ -99,8 +102,10 @@ class ProprietaireController extends Controller
      * @param  \App\Models\Proprietaire  $proprietaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proprietaire $proprietaire)
+    public function destroy($proprietaire)
     {
-        //
+        $proprietaire = Proprietaire::find($proprietaire);
+        $proprietaire->delete();
+        return redirect()->route('listeProprietaires');
     }
 }

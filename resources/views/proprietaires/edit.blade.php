@@ -3,15 +3,15 @@
 @section('content')
     <div class="card m-3">
         <div class="card-header">
-            <h2>Ajouter un proprietaire</h2>
+            <h2>Modifier un proprietaire</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{route('AjoutProprietaire')}}">
+            <form method="POST" action="{{route('modifierProprietaire')}}">
                 @csrf
 
                 <div class="form-group ">
                     <label for="nom">Code Proprietaire</label>
-                    <input type="text" name="code" class="form-control", required>
+                    <input type="text" name="code" class="form-control" value="{{ $proprietaire->cni}}" , required>
                 </div>
 
                 <div class="form-group">
@@ -29,10 +29,10 @@
                     <input class="form-control" name="prenom" type="text" , required >
                 </div>
 
-{{--                <div class="mb-3">--}}
-{{--                    <label for="formFile" class="form-label">Sexe</label>--}}
-{{--                    <input class="form-control" name="sexe" type="text" , required >--}}
-{{--                </div>--}}
+                {{--                <div class="mb-3">--}}
+                {{--                    <label for="formFile" class="form-label">Sexe</label>--}}
+                {{--                    <input class="form-control" name="sexe" type="text" , required >--}}
+                {{--                </div>--}}
                 <div class="mb-3">
                     <select class="form-select" name="sexe" aria-label="Default select example", required>
                         <option selected disabled>Sexe</option>

@@ -56,7 +56,7 @@
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Liste Proprietaire</a>
+                            <a class="nav-link" href="{{route('listeProprietaires')}}">Liste Proprietaires</a>
                             <a class="nav-link" href="{{route('AjoutProprietaire')}}">Ajout proprietaire</a>
                         </nav>
                     </div>
@@ -68,8 +68,8 @@
 
                     <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Liste Propriétés</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Ajout Propriété</a>
+                            <a class="nav-link" href="{{route('listePropriete')}}">Liste Propriétés</a>
+                            <a class="nav-link" href="{{route('ajoutPropriete')}}">Ajout Propriété</a>
                         </nav>
 {{--                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">--}}
 {{--                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">--}}
@@ -97,16 +97,26 @@
 {{--                        </nav>--}}
                     </div>
                     <div class="sb-sidenav-menu-heading">Gestion Localisation</div>
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                        Error
+
+                    <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                            Pays
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{route('AjoutPays')}}">Gestion Pays</a>
+                                <a class="nav-link" href="{{route('AjoutVille')}}">Gestion Ville</a>
+                                <a class="nav-link" href="password.html">Gestion Commune</a>
+                                <a class="nav-link" href="password.html">Gestion Quartier</a>
+                            </nav>
+                        </div>
+                    </nav>
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Gestion Propriété
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Liste Proprietaire</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Ajout proprietaire</a>
-                            </nav>
-                    </div>
                 </div>
             </div>
 

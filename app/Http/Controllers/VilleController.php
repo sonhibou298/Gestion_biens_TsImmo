@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pays;
 use App\Models\Ville;
 use App\Http\Requests\StoreVilleRequest;
 use App\Http\Requests\UpdateVilleRequest;
@@ -15,7 +16,8 @@ class VilleController extends Controller
      */
     public function index()
     {
-        //
+        $villes = Ville::all();
+        return view('villes.ville');
     }
 
     /**
@@ -25,7 +27,8 @@ class VilleController extends Controller
      */
     public function create()
     {
-        //
+        $pays = Pays::all();
+        return view('villes.ville');
     }
 
     /**
@@ -36,7 +39,11 @@ class VilleController extends Controller
      */
     public function store(StoreVilleRequest $request)
     {
-        //
+        $villes = new Ville();
+        $villes->nomVille = $request->nom;
+        $villes->pays_id = $request->pays;
+
+        return redirect()->route('listeVille');
     }
 
     /**

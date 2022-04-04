@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proprietaire;
 use App\Models\Propriete;
 use App\Http\Requests\StoreProprieteRequest;
 use App\Http\Requests\UpdateProprieteRequest;
+use App\Models\Quartier;
 
 class ProprieteController extends Controller
 {
@@ -15,7 +17,8 @@ class ProprieteController extends Controller
      */
     public function index()
     {
-        //
+        $prop = Propriete::all();
+        return view('proprietes.list', compact('prop'));
     }
 
     /**
@@ -25,7 +28,8 @@ class ProprieteController extends Controller
      */
     public function create()
     {
-        //
+        $proprietaire = Proprietaire::all();
+        $quarier = Quartier::all();
     }
 
     /**
@@ -36,7 +40,8 @@ class ProprieteController extends Controller
      */
     public function store(StoreProprieteRequest $request)
     {
-        //
+        $prop = new Propriete();
+
     }
 
     /**

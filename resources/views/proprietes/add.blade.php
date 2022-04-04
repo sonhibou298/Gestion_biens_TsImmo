@@ -3,7 +3,7 @@
 @section('content')
     <div class="card m-3">
         <div class="card-header">
-            <h2>Ajouter un proprietaire</h2>
+            <h2>Ajouter une propriete</h2>
         </div>
         <div class="card-body">
             <form method="POST" action="{{route('AjoutProprietaire')}}">
@@ -29,10 +29,10 @@
                     <input class="form-control" name="prenom" type="text" , required >
                 </div>
 
-{{--                <div class="mb-3">--}}
-{{--                    <label for="formFile" class="form-label">Sexe</label>--}}
-{{--                    <input class="form-control" name="sexe" type="text" , required >--}}
-{{--                </div>--}}
+                {{--                <div class="mb-3">--}}
+                {{--                    <label for="formFile" class="form-label">Sexe</label>--}}
+                {{--                    <input class="form-control" name="sexe" type="text" , required >--}}
+                {{--                </div>--}}
                 <div class="mb-3">
                     <select class="form-select" name="sexe" aria-label="Default select example", required>
                         <option selected disabled>Sexe</option>

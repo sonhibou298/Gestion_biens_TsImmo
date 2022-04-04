@@ -15,7 +15,8 @@ class PaysController extends Controller
      */
     public function index()
     {
-        //
+//        $pays = Pays::all();
+//        return view('pays.pays', compact('pays'));
     }
 
     /**
@@ -25,7 +26,8 @@ class PaysController extends Controller
      */
     public function create()
     {
-        //
+        $pays = Pays::all();
+        return view('pays.pays', compact('pays'));
     }
 
     /**
@@ -36,7 +38,12 @@ class PaysController extends Controller
      */
     public function store(StorePaysRequest $request)
     {
-        //
+        $pays = new Pays();
+        $pays->nomPays = $request->nom;
+        $pays->indicatif = $request->indicatif;
+        $pays->save();
+
+        return redirect()->route('ListePays');
     }
 
     /**
@@ -58,7 +65,7 @@ class PaysController extends Controller
      */
     public function edit(Pays $pays)
     {
-        //
+
     }
 
     /**
@@ -79,8 +86,11 @@ class PaysController extends Controller
      * @param  \App\Models\Pays  $pays
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pays $pays)
+    public function destroy($pays)
     {
-        //
+
+        $pays = Pays::find($pays);
+        $pays->delete();
+        return redirect()->route('ListePays');
     }
 }
