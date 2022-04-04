@@ -6,41 +6,41 @@
             <h2>Modifier une propriete</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{route('ajoutPropriete')}}">
+            <form method="POST" action="{{url('/updatePropriete/'.$propriete->id)}}">
                 @csrf
-
+                @method('PUT')
                 <div class="form-group ">
                     <label for="nom">Nom Proprieté</label>
-                    <input type="text" name="nom" class="form-control", required>
+                    <input type="text" name="nom" class="form-control" value="{{$propriete->nomPropriete}}" , required>
                 </div>
 
                 <div class="form-group">
                     <label for="desc">Date Enregistrement</label>
-                    <input type="date" name="date" class="form-control", required>
+                    <input type="date" name="date" class="form-control" value="{{$propriete->dateEnregistrement}}", required>
                 </div>
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Nombre Etage</label>
-                    <input class="form-control" name="nbrEtage" type="number" , required >
+                    <input class="form-control" name="nbrEtage" type="number" value="{{$propriete->nbrEtage}}" , required >
                 </div>
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Nombre piece</label>
-                    <input class="form-control" name="nbrPiece" type="number" , required >
+                    <input class="form-control" name="nbrPiece" type="number" value="{{$propriete->nbrPiece}}", required >
                 </div>
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Superficie</label>
-                    <input class="form-control" name="superficie" type="float" , required >
+                    <input class="form-control" name="superficie" type="float" value="{{$propriete->superficie}}", required >
                 </div>
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">adresse</label>
-                    <input class="form-control" name="adresse" type="text" , required >
+                    <input class="form-control" name="adresse" type="text" value="{{$propriete->adresse}}" , required >
                 </div>
 
                 <div class="mb-3">
-                    <select class="form-select" name="type" aria-label="Default select example", required>
+                    <select class="form-select" name="type" aria-label="Default select example" value="{{$propriete->typePropriete}}", required>
                         <option selected disabled>Type Propriete</option>
                         <option value="appartement">Appartement</option>
                         <option value="duplex">Duplex</option>
@@ -51,7 +51,7 @@
 
 
                 <div class="mb-3">
-                    <select class="form-select" name="proprietaire" aria-label="Default select example", required>
+                    <select class="form-select" name="proprietaire" aria-label="Default select example" value="{{$propriete->proprietaire_id}}", required>
                         <option selected disabled>Proprietaire</option>
                         @foreach($proprietaire as $prop)
                             <option value="{{$prop->id}}">{{$prop->prenomProprietaire}} {{$prop->nomProprietaire}} ({{$prop->codeProprietaire}})</option>
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <select class="form-select" name="quartier" aria-label="Default select example", required>
+                    <select class="form-select" name="quartier" aria-label="Default select example" value="{{$propriete->quartier_id}}", required>
                         <option selected disabled>Quartier</option>
                         @foreach($quartier as $q)
                             <option value="{{$q->id}}">{{$q->nomQuartier}}</option>

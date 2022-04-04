@@ -89,9 +89,21 @@ class ProprieteController extends Controller
      * @param  \App\Models\Propriete  $propriete
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProprieteRequest $request, Propriete $propriete)
+    public function update(UpdateProprieteRequest $request, $id)
     {
-        //
+        $prop = Propriete::find($id);
+        $prop->nomPropriete = $request->nom;
+        $prop->dateEnregistrement = $request->date;
+        $prop->nbrEtage = $request->nbrEtage;
+        $prop->nbrPiece = $request->nbrPiece;
+        $prop->superficie = $request->superficie;
+        $prop->adresse = $request->adresse;
+        $prop->typePropriete = $request->type;
+        $prop->proprietaire_id = $request->proprietaire;
+        $prop->quartier_id = $request->quartier;
+
+        $prop->update();
+        return redirect()->route('listePropriete');
     }
 
     /**
